@@ -178,15 +178,25 @@ void tensileTest(int cmpV){
         if(loadCReading < (initReading + deadZone) && loadCReading > (initReading - deadZone)) break;
       }
 
+      Serial.print("<");
       Serial.print(tmpStp);
       Serial.print(",");
-      Serial.println(loadCReading,4);
+      Serial.print(loadCReading,4);
+      Serial.print(">\n");
       stepLecture = true;
 
       lastReading = loadCReading;
     }
   }
-  opExecute(state);
+  if(state == NO_OP){
+    Serial.print("<TEST_ENDED>\n");
+    opExecute(STOP);
+  }
+  else{
+    opExecute(state);
+    //Serial.print("<TEST_STOPED>\n");
+  }
+  
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
