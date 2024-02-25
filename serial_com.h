@@ -4,7 +4,7 @@
 #include "header_lib.h"
 
 void setupSerial(){
-  Serial.begin(115200);
+  Serial.begin(9600);
   while (!Serial.available()) delay(100);
   //Serial.println("Connection success");
   delay(100);
